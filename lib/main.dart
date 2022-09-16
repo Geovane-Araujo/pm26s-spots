@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spots/pages/home.dart';
 import 'package:spots/pages/login.dart';
 
 void main() {
@@ -11,11 +12,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Login(),
+        '/home': (context) => Home()
+      },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: Login(),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:spots/widgets/PTextField.dart';
 
 import '../style/Style.dart';
+import '../widgets/PButton.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -23,7 +24,10 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              PTextField(textEditingController: _coLogin)
+              PTextField(textEditingController: _coLogin,hint: "Login",),
+              PTextField(textEditingController: _coLogin, hint: "Senha",),
+              PButton(hint: "Entrar",backgroundColor: Style.primaryColor,router: "home"),
+              PButton(hint: "Cadastre-se",backgroundColor: Style.primaryColor)
             ],
           ),
         ),
