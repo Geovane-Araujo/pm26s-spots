@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:spots/pages/taks.dart';
+import 'package:spots/pages/list_pontos_turisitcos.dart';
 import 'package:spots/style/Style.dart';
 
 class Home extends StatefulWidget {
@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
       drawer: Drawer(
+
         child: ListView(
           children: [
             DrawerHeader(
@@ -38,9 +39,9 @@ class _HomeState extends State<Home> {
                 )
             ),
             ListTile(
-              title: Text("Cadastro tarefas"),
+              title: Text("Cadastro pontos turisticos"),
               onTap: () {
-                Navigator.push(context,MaterialPageRoute(builder: (context) => Tasks()));
+                Navigator.push(context,MaterialPageRoute(builder: (context) => ListPontosTuristicos()));
               },
             ),
             InkWell(
@@ -101,7 +102,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => Tasks()));
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => ListPontosTuristicos()));
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -110,7 +111,7 @@ class _HomeState extends State<Home> {
                             Image.asset("assets/images/logos/task.png",height: 40,width: 40),
                             Container(
                                 margin: EdgeInsets.only(top: 20),
-                                child: Text("Cadastro de Tarefas",
+                                child: Text("Cadastro pontos turisticos",
                                     style: TextStyle(
                                         color: Style.primaryColor,
                                         fontSize: 16

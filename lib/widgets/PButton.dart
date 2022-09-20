@@ -43,8 +43,8 @@ class _PButtonState extends State<PButton> {
           backgroundColor: widget.backgroundColor,
           foregroundColor: widget.foregroundColor
         ),
-        onPressed: () => {
-          Navigator.pushNamed(context, '/' + widget.router)
+        onPressed: (){
+          Navigator.pushNamed(context, '/' + widget.router);
         },
         child: Text(widget.hint),
       )

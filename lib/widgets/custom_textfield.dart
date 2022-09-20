@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class PTextField extends StatefulWidget {
-  const PTextField({
+class CustomTextField extends StatefulWidget {
+  const CustomTextField({
      required this.textEditingController,
      this.hint = "",
     Key? key
@@ -12,10 +12,10 @@ class PTextField extends StatefulWidget {
   final String hint;
 
   @override
-  State<PTextField> createState() => _PTextFieldState();
+  State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
-class _PTextFieldState extends State<PTextField> {
+class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   void initState() {
@@ -33,10 +33,6 @@ class _PTextFieldState extends State<PTextField> {
           border: Border.all(color: Colors.black26)
       ),
       child: TextField(
-        // style: TextStyle(
-        //   fontSize: 14
-        // ) ,
-
         controller: widget.textEditingController,
         decoration: InputDecoration(
           hintText: widget.hint,

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:spots/widgets/PTextField.dart';
+import 'package:spots/widgets/custom_textfield.dart';
 
 import '../style/Style.dart';
 import '../widgets/PButton.dart';
@@ -24,10 +24,16 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              PTextField(textEditingController: _coLogin,hint: "Login",),
-              PTextField(textEditingController: _coLogin, hint: "Senha",),
-              PButton(hint: "Entrar",backgroundColor: Style.primaryColor,router: "home"),
-              PButton(hint: "Cadastre-se",backgroundColor: Style.primaryColor)
+              CustomTextField(textEditingController: _coLogin,hint: "Login",),
+              CustomTextField(textEditingController: _coLogin, hint: "Senha",),
+              PButton(
+                hint: "Entrar",
+                backgroundColor: Style.primaryColor,
+                router: "home",
+              ),
+              PButton(
+                  hint: "Cadastre-se",
+                  backgroundColor: Style.primaryColor)
             ],
           ),
         ),
