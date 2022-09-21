@@ -20,14 +20,6 @@ class CustomButton extends StatelessWidget {
     required this.onPressed
   }) : super(key: key);
 
-
-
-
-  @override
-  void initState() {
-    print("dsljdk");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -4,6 +4,8 @@ import 'package:flutter/rendering.dart';
 import 'package:spots/pages/list_pontos_turisitcos.dart';
 import 'package:spots/style/Style.dart';
 
+import '../connection/connection_db.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -12,8 +14,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+
+
   @override
   Widget build(BuildContext context) {
+    ConnectionDb cnn = new ConnectionDb();
+    cnn.onCreateDatabase();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Spots"),

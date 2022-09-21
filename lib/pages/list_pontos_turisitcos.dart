@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:spots/pages/page_pontos_turisticos.dart';
+import 'package:spots/pages/form_pontos_turisticos.dart';
 
 import '../style/Style.dart';
+import '../widgets/custom_input_date.dart';
+import '../widgets/custom_input_text.dart';
 import '../widgets/custom_textfield.dart';
 
 class ListPontosTuristicos extends StatefulWidget {
@@ -15,6 +17,12 @@ class ListPontosTuristicos extends StatefulWidget {
 class _ListPontosTuristicosState extends State<ListPontosTuristicos> {
 
   TextEditingController texfilter = new TextEditingController();
+  TextEditingController datefilter = new TextEditingController();
+
+  @override
+  void initState() {
+    print("dsljdk");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +39,12 @@ class _ListPontosTuristicosState extends State<ListPontosTuristicos> {
                   child: Text("Filtros"),
                 )
             ),
-            CustomTextField(
-              textEditingController: texfilter,
+            CustomInputDate(
+              controller: datefilter,
+              hint: "Data Cadastros",
+            ),
+            CustomInputText(
+              controller: texfilter,
               hint: "Nome/Descrição",
             ),
             InkWell(
@@ -68,8 +80,11 @@ class _ListPontosTuristicosState extends State<ListPontosTuristicos> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: (){
-          Navigator.push(context,MaterialPageRoute(builder: (context) => PagePontosTuristicos()));
+        onPressed: () async{
+          await Navigator.push(context,MaterialPageRoute(builder: (context) => FormPontosTuristicos()));
+          setState(() {
+            print("SetState");
+          });
         },
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spots/widgets/custom_textfield.dart';
 
+import '../connection/connection_db.dart';
 import '../style/Style.dart';
 import '../widgets/PButton.dart';
 
@@ -14,6 +15,11 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   TextEditingController _coLogin = new TextEditingController();
+
+  @override
+  void initState() {
+
+  }
 
   @override
   Widget build(BuildContext context) {
