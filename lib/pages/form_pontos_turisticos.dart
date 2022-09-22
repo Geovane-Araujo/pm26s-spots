@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:spots/model/PontosTuristicos.dart';
+import 'package:spots/pages/ListPontos.dart';
 import 'package:spots/pages/list_pontos_turisitcos.dart';
 import 'package:spots/widgets/custom_button.dart';
 
@@ -8,7 +12,13 @@ import '../widgets/custom_input_date.dart';
 import '../widgets/custom_input_text.dart';
 
 class FormPontosTuristicos extends StatefulWidget {
-  const FormPontosTuristicos({Key? key}) : super(key: key);
+
+  final PontosTuristicos? pontoT;
+
+  const FormPontosTuristicos({
+    this.pontoT,
+    Key? key
+  }) : super(key: key);
 
   @override
   State<FormPontosTuristicos> createState() => _FormPontosTuristicosState();
@@ -17,11 +27,15 @@ class FormPontosTuristicos extends StatefulWidget {
 class _FormPontosTuristicosState extends State<FormPontosTuristicos> {
 
   TextEditingController description = new TextEditingController();
+  TextEditingController detail = new TextEditingController();
   TextEditingController date = new TextEditingController();
 
   @override
   void initState() {
-    print("dsljdk");
+    if(widget.pontoT != null){
+      description.text = widget.pontoT!.descricao;
+      detail.text = widget.pontoT!.detalhes;
+    }
   }
 
   @override
@@ -56,6 +70,23 @@ class _FormPontosTuristicosState extends State<FormPontosTuristicos> {
               backgroundColor: Style.primaryColor,
               hint: "Salvar",
               onPressed: () {
+                Random r = new Random();
+                PontosTuristicos ponto = new PontosTuristicos(data: DateTime.now());
+
+                ponto.descricao = description.text;
+                ponto.data = DateTime.now();
+                ponto.detalhes = detail.text;
+
+                if(widget.pontoT == null){
+                  ponto.id = r.nextInt(10000);
+                  ListPontos.pontos.add(ponto);
+                } else {
+                  int index = 1;
+                  ponto.id = widget.pontoT!.id;
+                  ListPontos.pontos.removeWhere((element) => element.id == widget.pontoT!.id );
+                  ListPontos.pontos.add(ponto);
+                }
+
                 Navigator.pop(context,MaterialPageRoute(builder: (context) => ListPontosTuristicos()));
               },
             ),

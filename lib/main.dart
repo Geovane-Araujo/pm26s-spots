@@ -6,14 +6,13 @@ import 'package:spots/pages/login.dart';
 void main() {
   runApp(const MyApp());
 
-
+  ConnectionDb cnn = new ConnectionDb();
+  cnn.onCreateDatabase();
 
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {

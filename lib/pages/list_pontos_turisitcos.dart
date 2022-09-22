@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:spots/model/PontosTuristicos.dart';
 import 'package:spots/pages/form_pontos_turisticos.dart';
+import 'package:spots/pages/login.dart';
 
 import '../style/Style.dart';
+import '../util/menu.dart';
 import '../widgets/custom_input_date.dart';
 import '../widgets/custom_input_text.dart';
-import '../widgets/custom_textfield.dart';
+import 'ListPontos.dart';
 
 class ListPontosTuristicos extends StatefulWidget {
   const ListPontosTuristicos({Key? key}) : super(key: key);
@@ -23,6 +26,7 @@ class _ListPontosTuristicosState extends State<ListPontosTuristicos> {
   void initState() {
     print("dsljdk");
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,16 +70,10 @@ class _ListPontosTuristicosState extends State<ListPontosTuristicos> {
         child: ListView.builder(
           itemBuilder: (BuildContext context, int index){
             return InkWell(
-              child: retItens(context),
-              onTap: () {
-                print("save");
-              },
-              onLongPress: () {
-
-              },
+              child: retItens(context,ListPontos.pontos[index]),
             );
           },
-          itemCount: 10,
+          itemCount: ListPontos.pontos.length,
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -83,7 +81,7 @@ class _ListPontosTuristicosState extends State<ListPontosTuristicos> {
         onPressed: () async{
           await Navigator.push(context,MaterialPageRoute(builder: (context) => FormPontosTuristicos()));
           setState(() {
-            print("SetState");
+            ListPontos.pontos;
           });
         },
       ),
@@ -91,15 +89,53 @@ class _ListPontosTuristicosState extends State<ListPontosTuristicos> {
   }
 
 
-  Widget retItens(context){
+  Widget retItens(context, PontosTuristicos ponto){
 
-    return  new Container(
+    return Container(
       height: 40,
         alignment: Alignment.centerLeft,
-        child: Text(
-            "Item 1",
-          style: TextStyle(
-          ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                child: Text(
+                  ponto.descricao,
+                  style: TextStyle(
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              width: 40,
+              child: PopupMenuButton<Menu>(
+                splashRadius: 1,
+                tooltip: "Opções",
+                icon: Icon(Icons.menu),
+                onSelected: (Menu item) {
+                  setState(() {
+                    if(item == Menu.Editar){
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => FormPontosTuristicos(pontoT: ponto)));
+                      setState(() {
+                        ListPontos.pontos;
+                      });
+                    } else {
+                      ListPontos.pontos.remove(ponto);
+                    }
+                  });
+                },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
+                  PopupMenuItem<Menu>(
+                    value: Menu.Editar,
+                    child: Text('Editar'),
+                  ),
+                  PopupMenuItem<Menu>(
+                    value: Menu.Excluir,
+                    child: Text('Excluir'),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       );
   }
