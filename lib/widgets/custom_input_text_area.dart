@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 
-class CustomInputText extends StatelessWidget {
+class CustomInputTextArea extends StatelessWidget {
 
   final TextEditingController controller;
   final String hint;
@@ -11,7 +11,7 @@ class CustomInputText extends StatelessWidget {
   final Color foregroundColor;
 
 
-  CustomInputText({Key? key,
+  CustomInputTextArea({Key? key,
     required this.controller,
     required this.hint,
     this.backgroundColor = Colors.white,
@@ -22,11 +22,12 @@ class CustomInputText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 44,
+      height: 80,
       margin: EdgeInsets.all(10),
       child: TextField(
         controller: controller,
-        maxLines: 1,
+        maxLines: 10,
+        keyboardType: TextInputType.multiline,
         style: TextStyle(
           color: foregroundColor,
         ),

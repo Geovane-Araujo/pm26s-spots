@@ -10,6 +10,7 @@ import 'package:spots/widgets/custom_button.dart';
 import '../style/Style.dart';
 import '../widgets/custom_input_date.dart';
 import '../widgets/custom_input_text.dart';
+import '../widgets/custom_input_text_area.dart';
 
 class FormPontosTuristicos extends StatefulWidget {
 
@@ -58,7 +59,11 @@ class _FormPontosTuristicosState extends State<FormPontosTuristicos> {
                     ),
                     CustomInputText(
                       controller: description,
-                      hint: "Nome/Descrição",
+                      hint: "Nome",
+                    ),
+                    CustomInputTextArea(
+                      controller: detail,
+                      hint: "Descrição",
                     ),
                   ],
                 ),
