@@ -8,9 +8,9 @@ import 'package:spots/pages/list_pontos_turisitcos.dart';
 import 'package:spots/widgets/custom_button.dart';
 
 import '../style/Style.dart';
-import '../widgets/custom_input_date.dart';
-import '../widgets/custom_input_text.dart';
-import '../widgets/custom_input_text_area.dart';
+import '../widgets/components/custom_input_date.dart';
+import '../widgets/components/custom_input_text.dart';
+import '../widgets/components/custom_input_text_area.dart';
 
 class FormPontosTuristicos extends StatefulWidget {
 
@@ -56,6 +56,7 @@ class _FormPontosTuristicosState extends State<FormPontosTuristicos> {
                     CustomInputDate(
                       controller: date,
                       hint: "Data Cadastros",
+                      visible: false,
                     ),
                     CustomInputText(
                       controller: description,

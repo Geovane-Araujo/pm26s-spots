@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:spots/widgets/custom_textfield.dart';
+import 'package:spots/widgets/components/custom_input_text.dart';
+import 'package:spots/widgets/custom_button.dart';
 
-import '../connection/connection_db.dart';
 import '../style/Style.dart';
-import '../widgets/PButton.dart';
+
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -30,16 +30,20 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              CustomTextField(textEditingController: _coLogin,hint: "Login",),
-              CustomTextField(textEditingController: _coLogin, hint: "Senha",),
-              PButton(
+              CustomInputText(controller: _coLogin,hint: "Login",),
+              CustomInputText(controller: _coLogin, hint: "Senha",),
+              CustomButton(
                 hint: "Entrar",
-                backgroundColor: Style.primaryColor,
-                router: "home",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                }
               ),
-              PButton(
+              CustomButton(
                   hint: "Cadastre-se",
-                  backgroundColor: Style.primaryColor)
+                  onPressed: () {
+                  },
+                  backgroundColor: Style.primaryColor
+              ),
             ],
           ),
         ),

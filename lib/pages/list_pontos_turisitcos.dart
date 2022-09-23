@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spots/model/PontosTuristicos.dart';
 import 'package:spots/pages/form_pontos_turisticos.dart';
-import 'package:spots/pages/login.dart';
 
 import '../style/Style.dart';
 import '../util/menu.dart';
-import '../widgets/custom_input_date.dart';
-import '../widgets/custom_input_text.dart';
+import '../widgets/components/custom_input_date.dart';
+
+import '../widgets/components/custom_input_text.dart';
 import 'ListPontos.dart';
 
 class ListPontosTuristicos extends StatefulWidget {
